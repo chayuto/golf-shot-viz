@@ -15,6 +15,10 @@ real measured trajectory, not a simulation.
 
 **[Live demo](https://chayuto.github.io/golf-shot-viz)**
 
+Reference consumer: [swing-stack](https://github.com/chayuto/swing-stack),
+a launch monitor telemetry dashboard. This library was extracted from it
+and powers its 3D shot view, installed from npm like any other dependency.
+
 ## Why this exists
 
 Open source golf 3D projects are simulators. They take launch
