@@ -1,6 +1,6 @@
 {
   "name": "golf-shot-viz",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "3D golf shot visualizer for measured launch monitor trajectories. Three.js scene with studio and replay modes, volley playback, TrackMan adapter, React wrapper.",
   "keywords": [
     "golf",

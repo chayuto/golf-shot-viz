@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.2.0 (2026-07-20)
 
 - Runtime setters for the remaining constructor options: setPalette,
   setBackground (including to and from transparent), setTooltip. Every
