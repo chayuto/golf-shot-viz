@@ -24,7 +24,20 @@ jobs:
 
       - run: npm ci
 
+      # Idempotent: a tag for an already-published version skips cleanly
+      # (0.1.0 was published manually).
+      - name: Check registry
+        id: registry
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          if [ "$(npm view golf-shot-viz@"$VERSION" version 2>/dev/null)" = "$VERSION" ]; then
+            echo "published=true" >> "$GITHUB_OUTPUT"
+            echo "golf-shot-viz@$VERSION already on npm, skipping publish"
+          fi
+
       # prepublishOnly runs lint, typecheck, tests, and the build.
       - run: npm publish --provenance --access public
+        if: steps.registry.outputs.published != 'true'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
