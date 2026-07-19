@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>golf-shot-viz — options catalog</title>
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: #0b0e14;
+        color: #dbe4ee;
+        font: 14px/1.5 system-ui, -apple-system, sans-serif;
+      }
+      header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 20px 10px;
+      }
+      header h1 { margin: 0; font-size: 20px; letter-spacing: 0.02em; }
+      header p { margin: 2px 0 0; color: #8b98a9; font-size: 13px; }
+      nav a { color: #6ea8e8; text-decoration: none; margin-left: 14px; }
+      nav a:hover { text-decoration: underline; }
+      main { max-width: 1480px; margin: 0 auto; padding: 8px 20px 40px; }
+      section { margin-top: 28px; }
+      h2 { margin: 0; font-size: 16px; }
+      h2 code { color: #9ec3ef; }
+      section > p { margin: 6px 0 12px; color: #aab6c6; max-width: 76ch; }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 14px;
+      }
+      figure { margin: 0; }
+      figure img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 8px;
+        border: 1px solid #202939;
+      }
+      figure img.checker {
+        background: repeating-conic-gradient(#2a3242 0% 25%, #1a212e 0% 50%) 0 0 / 24px 24px;
+      }
+      figcaption { margin-top: 6px; font-size: 13px; color: #aab6c6; }
+      figcaption code { color: #dbe4ee; }
+      .badge {
+        background: #2a4365;
+        border: 1px solid #3f6499;
+        border-radius: 999px;
+        padding: 1px 8px;
+        font-size: 11px;
+        margin-left: 4px;
+      }
+      .dim { color: #8b98a9; margin-left: 4px; }
+      ul { color: #aab6c6; max-width: 76ch; padding-left: 20px; }
+      li { margin: 6px 0; }
+      li code { color: #dbe4ee; }
+      footer { padding: 24px 20px; color: #66748a; font-size: 12px; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>golf-shot-viz options catalog</h1>
+        <p>
+          Every visual option, captured from the same 29 fixture shots so only
+          the option changes between images in a row.
+        </p>
+      </div>
+      <nav>
+        <a href="../">Live demo</a>
+        <a href="https://github.com/chayuto/golf-shot-viz">GitHub</a>
+        <a href="https://www.npmjs.com/package/golf-shot-viz">npm</a>
+      </nav>
+    </header>
+    <main>
+      
+    <section>
+      <h2><code>mode</code></h2>
+      <p>studio draws every full trajectory for analysis. showcase is the replay view; trajectories reveal over time. Shown mid volley replay.</p>
+      <div class="cards">
+        <figure>
+          <img src="mode-studio.jpg" alt="mode: studio"
+            width="1920" height="1080" loading="lazy" />
+          <figcaption><code>studio</code> <span class="badge">default</span> </figcaption>
+        </figure>
+
+        <figure>
+          <img src="mode-showcase.jpg" alt="mode: showcase"
+            width="1920" height="1080" loading="lazy" />
+          <figcaption><code>showcase</code>  </figcaption>
+        </figure></div>
+    </section>
+
+    <section>
+      <h2><code>cameraPreset</code></h2>
+      <p>Framing presets sized to the data extent. Also settable at runtime with setCameraPreset, which flies the camera over.</p>
+      <div class="cards">
+        <figure>
+          <img src="camerapreset-broadcast.jpg" alt="cameraPreset: broadcast"
+            width="1920" height="1080" loading="lazy" />
+          <figcaption><code>broadcast</code> <span class="badge">default</span> </figcaption>
+        </figure>
+
+        <figure>
+          <img src="camerapreset-behind.jpg" alt="cameraPreset: behind"
+            width="1920" height="1080" loading="lazy" />
+          <figcaption><code>behind</code>  </figcaption>
+        </figure>
+
+        <figure>
+          <img src="camerapreset-side.jpg" alt="cameraPreset: side"
+            width="1920" height="1080" loading="lazy" />
+          <figcaption><code>side</code>  </figcaption>
+        </figure>
+
+        <figure>
+          <img src="camerapreset-top.jpg" alt="cameraPreset: top"
+            width="1920" height="1080" loading="lazy" />
+          <figcaption><code>top</code>  </figcaption>
+        </figure>
+
+        <figure>
+          <img src="camerapreset-green.jpg" alt="cameraPreset: green"
+            width="1920" height="1080" loading="lazy" />
+          <figcaption><code>green</code>  </figcaption>
+        </figure></div>
+    </section>
+
+    <section>
+      <h2><code>colorBy</code></h2>
+      <p>How tracer colors are assigned when shots carry no explicit color. club and session take fixed palette slots in order of first appearance. index cycles the palette per shot.</p>
+      <div class="cards">
+        <figure>
+          <img src="colorby-club.jpg" alt="colorBy: club"
+            width="1920" height="1080" loading="lazy" />
+          <figcaption><code>club</code> <span class="badge">default</span> </figcaption>
+        </figure>
+
+        <figure>
+          <img src="colorby-session.jpg" alt="colorBy: session"
+            width="1920" height="1080" loading="lazy" />
+          <figcaption><code>session</code>  </figcaption>
+        </figure>
+
+        <figure>
+          <img src="colorby-index.jpg" alt="colorBy: index"
+            width="1920" height="1080" loading="lazy" />
+          <figcaption><code>index</code>  </figcaption>
+        </figure></div>
+    </section>
+
+    <section>
+      <h2><code>palette</code></h2>
+      <p>Ordered categorical colors, any CSS color. The default is CVD-validated for dark surfaces. Keys beyond the palette length render gray instead of cycling.</p>
+      <div class="cards">
+        <figure>
+          <img src="palette-default.jpg" alt="palette: default"
+            width="1920" height="1080" loading="lazy" />
+          <figcaption><code>default</code>  </figcaption>
+        </figure>
+
+        <figure>
+          <img src="palette-custom.jpg" alt="palette: custom"
+            width="1920" height="1080" loading="lazy" />
+          <figcaption><code>custom</code>  <span class="dim">a warm custom palette</span></figcaption>
+        </figure></div>
+    </section>
+
+    <section>
+      <h2><code>background</code></h2>
+      <p>Scene background as a CSS color, or null for a transparent canvas over whatever the page draws behind it. Fog matches the background color.</p>
+      <div class="cards">
+        <figure>
+          <img src="background-default.jpg" alt="background: default"
+            width="1920" height="1080" loading="lazy" />
+          <figcaption><code>default</code>  <span class="dim">'#0b0e14'</span></figcaption>
+        </figure>
+
+        <figure>
+          <img src="background-light.jpg" alt="background: light"
+            width="1920" height="1080" loading="lazy" />
+          <figcaption><code>light</code>  <span class="dim">'#eef2f7'</span></figcaption>
+        </figure>
+
+        <figure>
+          <img src="background-transparent.png" alt="background: transparent"
+            width="1920" height="1080" loading="lazy" class="checker" />
+          <figcaption><code>transparent</code>  <span class="dim">null, shown on a checkerboard</span></figcaption>
+        </figure></div>
+    </section>
+
+    <section>
+      <h2><code>groundColor</code></h2>
+      <p>Floor disc color, any CSS color. The default blends into the dark theme. A turf green reads as grass.</p>
+      <div class="cards">
+        <figure>
+          <img src="groundcolor-default.jpg" alt="groundColor: default"
+            width="1920" height="1080" loading="lazy" />
+          <figcaption><code>default</code>  <span class="dim">'#131a24'</span></figcaption>
+        </figure>
+
+        <figure>
+          <img src="groundcolor-green.jpg" alt="groundColor: green"
+            width="1920" height="1080" loading="lazy" />
+          <figcaption><code>green</code>  <span class="dim">'#215732'</span></figcaption>
+        </figure></div>
+    </section>
+
+    <section>
+      <h2><code>units</code></h2>
+      <p>Display units for the ground distance arcs and tooltips. Data stays meters either way.</p>
+      <div class="cards">
+        <figure>
+          <img src="units-meters.jpg" alt="units: meters"
+            width="1920" height="1080" loading="lazy" />
+          <figcaption><code>meters</code> <span class="badge">default</span> </figcaption>
+        </figure>
+
+        <figure>
+          <img src="units-yards.jpg" alt="units: yards"
+            width="1920" height="1080" loading="lazy" />
+          <figcaption><code>yards</code>  </figcaption>
+        </figure></div>
+    </section>
+
+    <section>
+      <h2><code>rollout</code></h2>
+      <p>Off clips each trajectory at the first touchdown, so what you see is carry. On renders the measured bounce and rollout points past it.</p>
+      <div class="cards">
+        <figure>
+          <img src="rollout-false.jpg" alt="rollout: false"
+            width="1920" height="1080" loading="lazy" />
+          <figcaption><code>false</code> <span class="badge">default</span> </figcaption>
+        </figure>
+
+        <figure>
+          <img src="rollout-true.jpg" alt="rollout: true"
+            width="1920" height="1080" loading="lazy" />
+          <figcaption><code>true</code>  </figcaption>
+        </figure></div>
+    </section>
+
+    <section>
+      <h2><code>autoRotate</code></h2>
+      <p>Slow idle orbit around the scene. Good for kiosk or hero placements.</p>
+      <div class="cards">
+        <figure>
+          <img src="autorotate-true.gif" alt="autoRotate: true"
+            width="640" height="360" loading="lazy" />
+          <figcaption><code>true</code>  <span class="dim">orbit speed as captured, not exact</span></figcaption>
+        </figure></div>
+    </section>
+
+    <section>
+      <h2><code>play({ order })</code></h2>
+      <p>volley launches every shot at once; fast balls visibly outpace slow ones. sequence staggers launches. Both GIFs are time-compressed.</p>
+      <div class="cards">
+        <figure>
+          <img src="play-order-volley.gif" alt="play order: volley"
+            width="640" height="360" loading="lazy" />
+          <figcaption><code>volley</code> <span class="badge">default</span> </figcaption>
+        </figure>
+
+        <figure>
+          <img src="play-order-sequence.gif" alt="play order: sequence"
+            width="640" height="360" loading="lazy" />
+          <figcaption><code>sequence</code>  </figcaption>
+        </figure></div>
+    </section>
+
+    <section>
+      <h2><code>select(id)</code></h2>
+      <p>Selecting a shot dims the rest. Click a tracer or call select(id); select(null) clears.</p>
+      <div class="cards">
+        <figure>
+          <img src="select-selected.jpg" alt="select: selected"
+            width="1920" height="1080" loading="lazy" />
+          <figcaption><code>selected</code>  <span class="dim">one shot selected</span></figcaption>
+        </figure></div>
+    </section>
+      <section>
+        <h2>Not pictured</h2>
+        <ul><li><code>tooltip</code> Built-in hover card with club, carry, apex, ball speed. A DOM overlay, so it only shows live. Try it in the demo.</li>
+<li><code>speed</code> Playback rate multiplier. play({ speed }) or setSpeed().</li>
+<li><code>loop</code> Restart the replay when it ends. play({ loop: true }).</li>
+<li><code>stagger</code> Seconds between launches in sequence order. Default 1.2.</li></ul>
+      </section>
+    </main>
+    <footer>
+      Generated by <code>npm run catalog</code> from scripts/catalog.config.mjs.
+      Fixtures are real TrackMan range shots, scrubbed to trajectories and
+      numbers only. TrackMan is a trademark of TrackMan A/S; this project is
+      not affiliated with or endorsed by TrackMan.
+    </footer>
+  </body>
+</html>

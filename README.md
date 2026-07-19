@@ -171,14 +171,16 @@ TrackMan adapter is the template.
 | `cameraPreset` | `'broadcast'` | `'broadcast'`, `'behind'`, `'side'`, `'top'`, `'green'` |
 | `palette` | built-in | ordered CSS colors, CVD-validated default |
 | `background` | `'#0b0e14'` | CSS color, or `null` for transparent |
+| `groundColor` | `'#131a24'` | floor disc CSS color, try a turf green |
 | `tooltip` | `true` | built-in hover tooltip |
 | `autoRotate` | `false` | slow idle orbit |
 | `rollout` | `false` | render measured bounce and rollout past carry |
 
 The [options catalog](https://chayuto.github.io/golf-shot-viz/catalog/)
 shows what each value looks like, captured from the same fixture shots
-so only the option changes between images. Every option also has a
-runtime setter.
+so only the option changes between images. It is also committed as
+[docs/CATALOG.md](./docs/CATALOG.md) for browsing in the repo. Every
+option also has a runtime setter.
 
 ## API
 
@@ -194,6 +196,7 @@ scene.setColorBy('session')
 scene.setCameraPreset('top')
 scene.setPalette(['#f2c14e', '#e4572e'])
 scene.setBackground(null)   // or any CSS color
+scene.setGroundColor('#215732')
 scene.setTooltip(false)
 scene.setAutoRotate(true)
 scene.setRollout(true)
@@ -229,12 +232,15 @@ npm run catalog
 ```
 
 walks the variant matrix in `scripts/catalog.config.mjs`, captures one
-image per option value from identical fixture shots, and generates the
-[catalog page](https://chayuto.github.io/golf-shot-viz/catalog/) into
-`demo/public/catalog/`. Nothing there is committed; the Pages deploy
-regenerates it on every push to main, and CI uploads it as a PR
-artifact next to the README media. When an option gains a value, add
-one entry to the matrix and the page stays complete.
+image per option value from identical fixture shots, and writes
+`docs/catalog/` (images plus the
+[catalog page](https://chayuto.github.io/golf-shot-viz/catalog/)) and
+[docs/CATALOG.md](./docs/CATALOG.md). All of it is committed, like the
+README media; the Pages deploy ships the committed copy next to the
+demo, and CI regenerates everything as a PR artifact so rendering
+changes are reviewable across the whole option surface. When an option
+gains a value, add one entry to the matrix and both pages stay
+complete.
 
 ## Development
 

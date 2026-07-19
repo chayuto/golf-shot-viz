@@ -14,6 +14,7 @@ export const RESET = `
   window.__gsv.scene.setColorBy('club')
   window.__gsv.scene.setPalette(window.__gsv.defaultPalette)
   window.__gsv.scene.setBackground('#0b0e14')
+  window.__gsv.scene.setGroundColor('#131a24')
   window.__gsv.scene.setRollout(false)
   window.__gsv.scene.setAutoRotate(false)
   window.__gsv.scene.select(null)
@@ -82,6 +83,18 @@ export const GROUPS = [
         caption: 'null, shown on a checkerboard',
         transparent: true,
         setup: `window.__gsv.scene.setBackground(null)`,
+      },
+    ],
+  },
+  {
+    option: 'groundColor',
+    note: 'Floor disc color, any CSS color. The default blends into the dark theme. A turf green reads as grass.',
+    variants: [
+      { name: 'default', isDefault: true, caption: `'#131a24'`, setup: '' },
+      {
+        name: 'green',
+        caption: `'#215732'`,
+        setup: `window.__gsv.scene.setGroundColor('#215732')`,
       },
     ],
   },

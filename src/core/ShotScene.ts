@@ -31,7 +31,7 @@ import type {
 } from '../types'
 import { Emitter } from './emitter'
 import { assignColors, DEFAULT_PALETTE, type ColorAssignment } from './palette'
-import { buildGround } from './ground'
+import { buildGround, DEFAULT_GROUND_COLOR } from './ground'
 import { buildPath, clipToCarry } from './spline'
 import { buildTimeline, type Timeline } from './timing'
 import { presetView, type SceneExtent } from './camera'
@@ -63,6 +63,7 @@ interface ResolvedOptions {
   cameraPreset: CameraPreset
   palette: string[]
   background: string | null
+  groundColor: string
   tooltip: boolean
   autoRotate: boolean
   rollout: boolean
@@ -75,6 +76,7 @@ const DEFAULT_OPTIONS: ResolvedOptions = {
   cameraPreset: 'broadcast',
   palette: DEFAULT_PALETTE,
   background: '#0b0e14',
+  groundColor: DEFAULT_GROUND_COLOR,
   tooltip: true,
   autoRotate: false,
   rollout: false,
@@ -367,6 +369,12 @@ export class ShotScene {
     this.applyBackground()
   }
 
+  setGroundColor(groundColor: string): void {
+    if (groundColor === this.options.groundColor) return
+    this.options.groundColor = groundColor
+    this.rebuildGround()
+  }
+
   /** Toggle the built-in hover tooltip. */
   setTooltip(tooltip: boolean): void {
     if (tooltip === Boolean(this.tooltip)) return
@@ -472,7 +480,11 @@ export class ShotScene {
       this.scene.remove(this.ground)
       disposeDeep(this.ground)
     }
-    this.ground = buildGround({ maxDistance: this.extent.maxDistance, units: this.options.units })
+    this.ground = buildGround({
+      maxDistance: this.extent.maxDistance,
+      units: this.options.units,
+      color: this.options.groundColor,
+    })
     this.scene.add(this.ground)
   }
 

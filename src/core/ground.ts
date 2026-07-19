@@ -20,7 +20,11 @@ export interface GroundOptions {
   /** Furthest point radius in meters. */
   maxDistance: number
   units: Units
+  /** Floor disc CSS color. */
+  color: string
 }
+
+export const DEFAULT_GROUND_COLOR = '#131a24'
 
 const ARC_HALF_ANGLE = Math.PI / 5 // ±36° around the target line
 const MINOR_COLOR = new Color('#2a3a4e')
@@ -31,7 +35,7 @@ const MAJOR_COLOR = new Color('#3f5878')
  * (labels every 50), a dashed target line, and a tee ring. Rebuilt when
  * units change so arcs sit on round numbers in the active unit.
  */
-export function buildGround({ maxDistance, units }: GroundOptions): Group {
+export function buildGround({ maxDistance, units, color }: GroundOptions): Group {
   const group = new Group()
   group.name = 'gsv-ground'
   const step = units === 'yards' ? 25 / YD_PER_M : 25
@@ -40,7 +44,7 @@ export function buildGround({ maxDistance, units }: GroundOptions): Group {
 
   const floor = new Mesh(
     new CircleGeometry(radius, 96),
-    new MeshBasicMaterial({ color: new Color('#131a24') }),
+    new MeshBasicMaterial({ color: new Color(color) }),
   )
   floor.rotation.x = -Math.PI / 2
   floor.position.y = -0.05

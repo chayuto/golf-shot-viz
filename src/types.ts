@@ -80,6 +80,8 @@ export interface ShotSceneOptions {
   palette?: string[]
   /** Scene background CSS color, or null for a transparent canvas. */
   background?: string | null
+  /** Floor disc CSS color. Try a turf green like '#215732'. */
+  groundColor?: string
   /** Built-in hover tooltip. Default true. */
   tooltip?: boolean
   /** Slow idle orbit. Default false. */

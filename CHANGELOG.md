@@ -5,10 +5,12 @@
 - Runtime setters for the remaining constructor options: setPalette,
   setBackground (including to and from transparent), setTooltip. Every
   option can now change without recreating the scene.
-- Options catalog: a generated page showing every option value as a
-  still or GIF captured from identical fixture shots. Built by
-  `npm run catalog`, deployed with the demo, uploaded as a CI artifact
-  on every PR.
+- groundColor option and setGroundColor: the floor disc takes any CSS
+  color, so the range can read as turf instead of the dark theme.
+- Options catalog: every option value as a still or GIF captured from
+  identical fixture shots. Built by `npm run catalog` and committed:
+  docs/CATALOG.md for the repo, docs/catalog/ for the page deployed
+  with the demo. CI regenerates it as a PR artifact.
 
 ## 0.1.1 (2026-07-19)
 

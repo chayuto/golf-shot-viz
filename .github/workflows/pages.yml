@@ -27,15 +27,13 @@ jobs:
 
       - run: npm ci
 
-      - run: npx playwright install --with-deps chromium
-
-      # Regenerates the options catalog into demo/public/catalog/ so
-      # the demo build below ships it.
-      - run: npm run catalog
-
       - run: npm run demo:build
         env:
           DEMO_BASE: /golf-shot-viz/
+
+      # The options catalog is committed, like the README media. Ship
+      # the committed copy with the demo.
+      - run: cp -R docs/catalog dist-demo/catalog
 
       - uses: actions/configure-pages@v5
 

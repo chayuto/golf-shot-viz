@@ -3,4 +3,3 @@ dist/
 dist-demo/
 *.tsbuildinfo
 .DS_Store
-demo/public/catalog/
