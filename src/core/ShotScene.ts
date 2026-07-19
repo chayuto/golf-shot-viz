@@ -133,7 +133,9 @@ export class ShotScene {
     this.container = container
     this.options = { ...DEFAULT_OPTIONS, ...options }
 
-    this.renderer = new WebGLRenderer({ antialias: true, alpha: this.options.background === null })
+    // Alpha stays on so setBackground(null) can go transparent later.
+    // With a background color set the scene paints every pixel anyway.
+    this.renderer = new WebGLRenderer({ antialias: true, alpha: true })
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     this.renderer.outputColorSpace = SRGBColorSpace
     const canvas = this.renderer.domElement
@@ -146,11 +148,7 @@ export class ShotScene {
     container.appendChild(canvas)
 
     this.scene = new Scene()
-    if (this.options.background !== null) {
-      const bg = new Color(this.options.background)
-      this.scene.background = bg
-      this.scene.fog = new Fog(bg, 300, 1000)
-    }
+    this.applyBackground()
     this.scene.add(new HemisphereLight(0x94b8dc, 0x141a21, 1.1))
     const sun = new DirectionalLight(0xffffff, 1.4)
     sun.position.set(80, 140, 60)
@@ -355,9 +353,36 @@ export class ShotScene {
   setColorBy(colorBy: ColorBy): void {
     if (colorBy === this.options.colorBy) return
     this.options.colorBy = colorBy
+    this.recolor()
+  }
+
+  setPalette(palette: string[]): void {
+    this.options.palette = palette
+    this.recolor()
+  }
+
+  setBackground(background: string | null): void {
+    if (background === this.options.background) return
+    this.options.background = background
+    this.applyBackground()
+  }
+
+  /** Toggle the built-in hover tooltip. */
+  setTooltip(tooltip: boolean): void {
+    if (tooltip === Boolean(this.tooltip)) return
+    if (tooltip) {
+      this.tooltip = new Tooltip(this.container)
+    } else {
+      this.tooltip?.dispose()
+      this.tooltip = null
+    }
+    this.options.tooltip = tooltip
+  }
+
+  private recolor(): void {
     this.assignment = assignColors(
       this.entries.map((e) => e.shot),
-      colorBy,
+      this.options.colorBy,
       this.options.palette,
     )
     for (const entry of this.entries) {
@@ -430,6 +455,17 @@ export class ShotScene {
   }
 
   // --------------------------------------------------------------- internal
+
+  private applyBackground(): void {
+    if (this.options.background === null) {
+      this.scene.background = null
+      this.scene.fog = null
+      return
+    }
+    const bg = new Color(this.options.background)
+    this.scene.background = bg
+    this.scene.fog = new Fog(bg, 300, 1000)
+  }
 
   private rebuildGround(): void {
     if (this.ground) {

@@ -28,8 +28,8 @@ jobs:
 
       - run: npm run demo:build
 
-  # Renders the demo headlessly and uploads the README media so visual
-  # regressions are reviewable on every PR.
+  # Renders the demo headlessly and uploads the README media and the
+  # options catalog so visual regressions are reviewable on every PR.
   visuals:
     runs-on: ubuntu-latest
     steps:
@@ -46,7 +46,14 @@ jobs:
 
       - run: npm run visuals
 
+      - run: npm run catalog
+
       - uses: actions/upload-artifact@v4
         with:
           name: readme-media
           path: docs/media
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: options-catalog
+          path: demo/public/catalog

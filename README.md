@@ -13,7 +13,8 @@ interactive Three.js scene. Orbit camera, hover metadata, replay
 playback with reconstructed timing. Every shot in these images is a
 real measured trajectory, not a simulation.
 
-**[Live demo](https://chayuto.github.io/golf-shot-viz)**
+**[Live demo](https://chayuto.github.io/golf-shot-viz)** &middot;
+**[Options catalog](https://chayuto.github.io/golf-shot-viz/catalog/)**
 
 Reference consumer: [swing-stack](https://github.com/chayuto/swing-stack),
 a launch monitor telemetry dashboard. This library was extracted from it
@@ -174,6 +175,11 @@ TrackMan adapter is the template.
 | `autoRotate` | `false` | slow idle orbit |
 | `rollout` | `false` | render measured bounce and rollout past carry |
 
+The [options catalog](https://chayuto.github.io/golf-shot-viz/catalog/)
+shows what each value looks like, captured from the same fixture shots
+so only the option changes between images. Every option also has a
+runtime setter.
+
 ## API
 
 ```ts
@@ -186,6 +192,10 @@ scene.setMode('showcase')
 scene.setUnits('yards')
 scene.setColorBy('session')
 scene.setCameraPreset('top')
+scene.setPalette(['#f2c14e', '#e4572e'])
+scene.setBackground(null)   // or any CSS color
+scene.setTooltip(false)
+scene.setAutoRotate(true)
 scene.setRollout(true)
 scene.select('shot-id')  // dim everything else
 scene.legend             // [{ key, color }] for building a legend UI
@@ -212,6 +222,20 @@ GIFs to `docs/media/`. Run it after any visual change and eyeball the
 diff. CI uploads the same output as an artifact on every PR, so
 rendering regressions show up in review.
 
+The options catalog works the same way at a larger scale:
+
+```sh
+npm run catalog
+```
+
+walks the variant matrix in `scripts/catalog.config.mjs`, captures one
+image per option value from identical fixture shots, and generates the
+[catalog page](https://chayuto.github.io/golf-shot-viz/catalog/) into
+`demo/public/catalog/`. Nothing there is committed; the Pages deploy
+regenerates it on every push to main, and CI uploads it as a PR
+artifact next to the README media. When an option gains a value, add
+one entry to the matrix and the page stays complete.
+
 ## Development
 
 ```sh
@@ -221,6 +245,7 @@ npm run lint
 npm run typecheck
 npm run build       # ESM + d.ts to dist/
 npm run visuals     # regenerate README media
+npm run catalog     # regenerate the options catalog page
 ```
 
 The demo fixtures are real TrackMan range sessions scrubbed to

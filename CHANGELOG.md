@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+- Runtime setters for the remaining constructor options: setPalette,
+  setBackground (including to and from transparent), setTooltip. Every
+  option can now change without recreating the scene.
+- Options catalog: a generated page showing every option value as a
+  still or GIF captured from identical fixture shots. Built by
+  `npm run catalog`, deployed with the demo, uploaded as a CI artifact
+  on every PR.
+
 ## 0.1.1 (2026-07-19)
 
 - Expose ./package.json in the exports map. Tooling that reads package

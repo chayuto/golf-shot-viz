@@ -51,6 +51,7 @@
     "lint": "eslint .",
     "demo:build": "vite build",
     "visuals": "node scripts/capture.mjs",
+    "catalog": "node scripts/catalog.mjs",
     "prepublishOnly": "npm run lint && npm run typecheck && npm run test && npm run build"
   },
   "peerDependencies": {

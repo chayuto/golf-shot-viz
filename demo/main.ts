@@ -1,4 +1,4 @@
-import { ShotScene, assignColors } from 'golf-shot-viz'
+import { ShotScene, assignColors, DEFAULT_PALETTE } from 'golf-shot-viz'
 import type {
   CameraPreset,
   ColorBy,
@@ -127,9 +127,10 @@ declare global {
     __gsv?: {
       scene: ShotScene
       fixtures: ShotInput[]
+      defaultPalette: string[]
       setMode: (mode: SceneMode) => void
       refreshShots: () => void
     }
   }
 }
-window.__gsv = { scene, fixtures, setMode, refreshShots }
+window.__gsv = { scene, fixtures, defaultPalette: DEFAULT_PALETTE, setMode, refreshShots }
