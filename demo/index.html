@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>golf-shot-viz — 3D golf shot visualizer</title>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <div class="brand">
+          <h1>golf-shot-viz</h1>
+          <p>3D visualizer for measured launch monitor trajectories. Real data, no simulation.</p>
+        </div>
+        <nav>
+          <a href="https://github.com/chayuto/golf-shot-viz">GitHub</a>
+          <a href="https://www.npmjs.com/package/golf-shot-viz">npm</a>
+        </nav>
+      </header>
+
+      <div id="controls">
+        <div class="group" id="mode-group" role="group" aria-label="Mode">
+          <button data-mode="studio" class="active">Studio</button>
+          <button data-mode="showcase">Replay</button>
+        </div>
+        <div class="group" role="group" aria-label="Playback">
+          <button id="play-volley">Volley</button>
+          <button id="play-sequence">Sequence</button>
+          <button id="pause">Pause</button>
+          <select id="speed" aria-label="Playback speed">
+            <option value="0.25">0.25x</option>
+            <option value="0.5">0.5x</option>
+            <option value="1" selected>1x</option>
+            <option value="2">2x</option>
+          </select>
+          <input id="scrub" type="range" min="0" max="1000" value="0" aria-label="Scrub" />
+        </div>
+        <div class="group" role="group" aria-label="View">
+          <select id="camera" aria-label="Camera preset">
+            <option value="broadcast" selected>Broadcast</option>
+            <option value="behind">Behind</option>
+            <option value="side">Side</option>
+            <option value="top">Top</option>
+            <option value="green">Green</option>
+          </select>
+          <select id="color-by" aria-label="Color by">
+            <option value="club" selected>Color by club</option>
+            <option value="session">Color by session</option>
+            <option value="index">Color by shot</option>
+          </select>
+          <select id="units" aria-label="Units">
+            <option value="meters" selected>Meters</option>
+            <option value="yards">Yards</option>
+          </select>
+          <label class="check"><input type="checkbox" id="rollout" /> Rollout</label>
+        </div>
+        <div class="group" id="clubs" role="group" aria-label="Clubs"></div>
+      </div>
+
+      <main id="viz"></main>
+
+      <footer>
+        <span id="status"></span>
+        <span>
+          Fixtures are real TrackMan range shots, scrubbed to trajectories and numbers only.
+          TrackMan is a trademark of TrackMan A/S; this project is not affiliated with or
+          endorsed by TrackMan.
+        </span>
+      </footer>
+    </div>
+    <script type="module" src="/main.ts"></script>
+  </body>
+</html>

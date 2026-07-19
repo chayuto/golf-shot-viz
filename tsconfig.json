@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "moduleDetection": "force",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "verbatimModuleSyntax": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "paths": {
+      "golf-shot-viz": ["./src/index.ts"],
+      "golf-shot-viz/react": ["./src/react/index.tsx"],
+      "golf-shot-viz/trackman": ["./src/trackman/index.ts"]
+    }
+  },
+  "include": ["src", "demo", "test", "tsup.config.ts", "vite.config.ts", "vitest.config.ts"]
+}

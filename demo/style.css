@@ -1,0 +1,140 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background: #0b0e14;
+  color: #dbe4ee;
+  font: 14px/1.5 system-ui, -apple-system, sans-serif;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 20px 10px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+}
+
+header p {
+  margin: 2px 0 0;
+  color: #8b98a9;
+  font-size: 13px;
+}
+
+nav a {
+  color: #6ea8e8;
+  text-decoration: none;
+  margin-left: 14px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+#controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  align-items: center;
+  padding: 8px 20px 12px;
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+button,
+select {
+  background: #161c26;
+  color: #dbe4ee;
+  border: 1px solid #2a3546;
+  border-radius: 6px;
+  padding: 5px 11px;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+button:hover,
+select:hover {
+  border-color: #3d4d64;
+}
+
+button.active {
+  background: #2a4365;
+  border-color: #3f6499;
+}
+
+button.chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+}
+
+button.chip .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+button.chip.off {
+  opacity: 0.38;
+}
+
+#scrub {
+  width: 160px;
+  accent-color: #3987e5;
+}
+
+label.check {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: #aab6c6;
+  cursor: pointer;
+}
+
+main#viz {
+  flex: 1;
+  min-height: 420px;
+  position: relative;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 8px 20px 12px;
+  color: #66748a;
+  font-size: 12px;
+}
+
+/* Chrome hidden for scripted README/QA captures. */
+body.capture header,
+body.capture #controls,
+body.capture footer {
+  display: none;
+}

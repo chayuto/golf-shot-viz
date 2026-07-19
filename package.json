@@ -1,0 +1,84 @@
+{
+  "name": "golf-shot-viz",
+  "version": "0.1.0",
+  "description": "3D golf shot visualizer for measured launch monitor trajectories. Three.js scene with studio and replay modes, volley playback, TrackMan adapter, React wrapper.",
+  "keywords": [
+    "golf",
+    "3d",
+    "trajectory",
+    "launch-monitor",
+    "trackman",
+    "threejs",
+    "visualization",
+    "ball-flight"
+  ],
+  "license": "MIT",
+  "author": "Chayut Orapinpatipat",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chayuto/golf-shot-viz.git"
+  },
+  "homepage": "https://chayuto.github.io/golf-shot-viz",
+  "bugs": {
+    "url": "https://github.com/chayuto/golf-shot-viz/issues"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./react": {
+      "types": "./dist/react/index.d.ts",
+      "default": "./dist/react/index.js"
+    },
+    "./trackman": {
+      "types": "./dist/trackman/index.d.ts",
+      "default": "./dist/trackman/index.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "demo:build": "vite build",
+    "visuals": "node scripts/capture.mjs",
+    "prepublishOnly": "npm run lint && npm run typecheck && npm run test && npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "three": ">=0.160.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.1.1",
+    "@types/react": "^19.2.17",
+    "@types/three": "^0.185.1",
+    "eslint": "^10.7.0",
+    "gifenc": "^1.0.3",
+    "playwright": "^1.61.1",
+    "pngjs": "^7.0.0",
+    "react": "^19.2.7",
+    "three": "^0.185.1",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.64.0",
+    "vite": "^8.1.5",
+    "vitest": "^4.1.10"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "Id": "report-1",
+  "Client": { "Name": "Private Person", "Email": "private@example.com" },
+  "Groups": [{ "Kind": "Facility", "Name": "Test Range" }],
+  "StrokeGroups": [
+    {
+      "Id": "group-1",
+      "Date": "2026-05-14T09:30:00Z",
+      "Ball": "Range",
+      "Strokes": [
+        {
+          "Id": "stroke-1",
+          "Time": "2026-05-14T09:31:02Z",
+          "Measurement": {
+            "BallSpeed": 55.2,
+            "HangTime": 5.5,
+            "Carry": 154.2,
+            "Total": 170.1,
+            "MaxHeight": 25.8,
+            "LaunchAngle": 16.2,
+            "SpinRate": 6200,
+            "Curve": -3.2,
+            "BallTrajectory": [
+              { "X": 0, "Y": 0, "Z": 0 },
+              { "X": 50.1, "Y": 15.2, "Z": -1.1 },
+              { "X": 100.4, "Y": 25.6, "Z": -3.4 },
+              { "X": 154.2, "Y": 0.0, "Z": -6.1 }
+            ]
+          },
+          "MeasurementDetails": {
+            "ImpactLocation": { "ClubConfiguration": { "StaticLoft": 0.532 } }
+          }
+        },
+        {
+          "Id": "stroke-2",
+          "Measurement": { "BallSpeed": 40.0 }
+        },
+        {
+          "Id": "stroke-3",
+          "Measurement": {
+            "HangTime": 3.1,
+            "BallTrajectory": [
+              { "X": 0, "Y": 0, "Z": 0 },
+              { "X": 30.2, "Y": 8.1, "Z": 1.0 },
+              { "X": 60.5, "Y": 0.0, "Z": 2.2 }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Id": "group-2",
+      "Strokes": [
+        {
+          "Id": "stroke-4",
+          "Measurement": {
+            "BallTrajectory": [
+              { "X": 0, "Y": 0, "Z": 0 },
+              { "X": 10.1, "Y": 2.2, "Z": 0.1 },
+              { "X": 20.3, "Y": 0.0, "Z": 0.9 }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
